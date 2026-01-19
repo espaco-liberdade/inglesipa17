@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 17: Habilidade e Permissão com "Can" e "Could" (Mobile Optimized)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-light: #f8f9fa;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Reset Global */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: var(--text-color);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        /* Navigation Button */
+        .nav-btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            transition: background 0.2s;
+            text-align: center;
+            width: 100%;
+        }
+
+        .nav-btn:hover {
+            background-color: #1a252f;
+        }
+
+        /* Headers */
+        h1 {
+            text-align: center;
+            color: var(--secondary-color);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        h2, h3 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+            margin-top: 30px;
+            font-size: 1.4rem;
+        }
+
+        h4 {
+            color: var(--primary-color);
+            margin-top: 20px;
+        }
+
+        /* Cards & Sections */
+        .theme-intro, .nota-gramatical, .nota-dica, .extra-task, .card, .tarefa-extra {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary-color);
+            width: 100%;
+        }
+
+        .nota-dica { border-left-color: #16a085; background-color: #e8f6f3; }
+        .extra-task, .tarefa-extra { border-left-color: #9b59b6; background-color: #f5eef8; }
+        .nota-gramatical { border-left-color: #f39c12; background-color: #fffbf0; }
+
+        /* Mobile Optimized Tables */
+        .mobile-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .mobile-table th {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .mobile-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+
+        .mobile-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Specific Column Styles */
+        .col-english {
+            width: 45%;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .col-details {
+            width: 55%;
+        }
+
+        /* Stacked Details Styles */
+        .ipa-text {
+            font-family: 'Courier New', monospace;
+            color: #e67e22;
+            font-size: 0.9em;
+            display: block;
+            margin-bottom: 4px;
+            word-wrap: break-word;
+        }
+
+        .pronunciation-text {
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 0.85em;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .translation-text {
+            color: #555;
+            font-size: 0.95em;
+            display: block;
+            border-top: 1px dashed #eee;
+            padding-top: 4px;
+        }
+
+        .example-word {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* Audio Button */
+        .audio-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 5px;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background 0.2s;
+            vertical-align: middle;
+        }
+
+        .audio-btn:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .audio-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Vocab Layout */
+        .vocab-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .vocab-word {
+            font-size: 1.1em;
+            color: var(--secondary-color);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .vocab-details {
+            margin-top: 5px;
+            padding-left: 10px;
+            border-left: 3px solid #ddd;
+        }
+
+        /* Exercises */
+        .fill-in-blank {
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            min-width: 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--primary-color);
+        }
+
+        .exercise-list li {
+            margin-bottom: 12px;
+        }
+
+        /* Gabarito Section */
+        details.gabarito {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        details.gabarito summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--secondary-color);
+        }
+
+        .quiz-options { list-style: none; padding: 0; }
+        .quiz-options li { margin-bottom: 8px; padding: 8px; background: white; border-radius: 4px; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #7f8c8d;
+        }
+
+        /* Estilo Específico para Tabelas de Estrutura */
+        .structure-table {
+            min-width: 100%; 
+        }
+        .structure-table th, .structure-table td {
+            white-space: nowrap;
+            padding: 10px;
+            text-align: left;
+        }
+        .scroll-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            background: white;
+        }
+
+        /* Small screen adjustments */
+        @media (max-width: 600px) {
+            .mobile-table:not(.structure-table) thead { display: none; }
+            .mobile-table:not(.structure-table) td { 
+                display: block; 
+                width: 100%; 
+                padding: 10px 15px;
+            }
+            .mobile-table:not(.structure-table) .col-english {
+                background-color: #f9f9f9;
+                padding-top: 15px;
+                border-bottom: none;
+            }
+            .mobile-table:not(.structure-table) .col-details {
+                padding-bottom: 15px;
+                border-bottom: 2px solid #e0e0e0;
+            }
+            
+            .container { padding: 10px; }
+            h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="#" class="nav-btn">⬅️ Voltar ao Menu</a>
+
+    <h1>Aula 17: O Que Você Pode Fazer? – Habilidade e Permissão com "Can" e "Could" <span style="font-size:1.2em">💪🗣️</span><br><small>(What Can You Do? – Ability and Permission with "Can" and "Could")</small></h1>
+
+    <div class="theme-intro">
+        <p>Olá! Chegamos à Aula 17! 🎉</p>
+        <p>Nesta aula, vamos explorar dois verbos modais muito importantes: <strong>"can"</strong> e <strong>"could"</strong>. Com eles, aprenderemos a falar sobre <strong>habilidades (tocar um instrumento, falar um idioma, cozinhar)</strong> e a fazer <strong>pedidos educados em situações cotidianas</strong>. Prepare-se para expressar suas capacidades e interagir com mais polidez! 🎹🗣️🍳🤝</p>
+    </div>
+
+    <!-- Section 17.1 Intro -->
+    <section>
+        <h2>17.1 Verbos Modais: Uma Introdução 🧩</h2>
+        <div class="card">
+            <p><strong>Verbos Modais (Modal Verbs)</strong> são verbos auxiliares especiais em inglês. Eles nos ajudam a expressar ideias como habilidade, possibilidade, permissão, obrigação, etc.</p>
+            <p><strong>Características Importantes:</strong></p>
+            <ul>
+                <li>Eles <strong>não mudam de forma</strong> com o sujeito (não adicionamos "-s" para he/she/it).<br><em>Ex: I can swim. He can swim. (Não "He cans...")</em></li>
+                <li>Eles são sempre seguidos pelo <strong>verbo principal na forma base</strong> (infinitivo sem "to").<br><em>Ex: She can play. (Não "She can to play...")</em></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Section 17.2 Can Ability -->
+    <section>
+        <h2>17.2 Habilidade no Presente: "Can" (Eu consigo, eu posso) 👍</h2>
+        <p>Usamos <strong>"can"</strong> para falar sobre habilidades no presente.</p>
+        
+        <table class="mobile-table">
+            <thead>
+                <tr>
+                    <th>Frase em Inglês</th>
+                    <th>Detalhes (Fonética & Tradução)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-english">
+                        I <span class="example-word">can play</span> the piano.
+                        <button class="audio-btn" onclick="playAudio('I can play the piano.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/aɪ kæn pleɪ ðə piˈænoʊ/</span>
+                        <span class="pronunciation-text">(ÁI kén PLÊI dhã pi-É-nôu)</span>
+                        <span class="translation-text">Eu sei/posso tocar piano.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        You <span class="example-word">can speak</span> English very well.
+                        <button class="audio-btn" onclick="playAudio('You can speak English very well.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/juː kæn spiːk ˈɪŋɡlɪʃ ˈveri wel/</span>
+                        <span class="pronunciation-text">(IÚU kén SPÍIK ÊN-glêsh VÉ-ri UÉL)</span>
+                        <span class="translation-text">Você sabe/pode falar inglês muito bem.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">can cook</span> delicious meals.
+                        <button class="audio-btn" onclick="playAudio('He can cook delicious meals.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiː kæn kʊk dɪˈlɪʃəs miːlz/</span>
+                        <span class="pronunciation-text">(RÍI kén CÚK dĩ-LÊ-shãs MÍILZ)</span>
+                        <span class="translation-text">Ele sabe/pode cozinhar refeições deliciosas.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        She <span class="example-word">can swim</span> like a fish.
+                        <button class="audio-btn" onclick="playAudio('She can swim like a fish.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ʃiː kæn swɪm laɪk ə fɪʃ/</span>
+                        <span class="pronunciation-text">(XÍI kén SUÊM LÁIK ã FÊSH)</span>
+                        <span class="translation-text">Ela sabe/pode nadar como um peixe.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        It (the computer) <span class="example-word">can process</span> data quickly.
+                        <button class="audio-btn" onclick="playAudio('It can process data quickly.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ɪt kæn ˈprɑːses ˈdeɪtə ˈkwɪkli/</span>
+                        <span class="pronunciation-text">(ÊT kén PRÓ-sés DÊI-tã CUÊK-li)</span>
+                        <span class="translation-text">Ele (o computador) pode processar dados rapidamente.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        We <span class="example-word">can dance</span> all night.
+                        <button class="audio-btn" onclick="playAudio('We can dance all night.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wiː kæn dæns ɔːl naɪt/</span>
+                        <span class="pronunciation-text">(UÍI kén DÉNS ÓL NÁIT)</span>
+                        <span class="translation-text">Nós podemos dançar a noite toda.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        They <span class="example-word">can solve</span> complex problems.
+                        <button class="audio-btn" onclick="playAudio('They can solve complex problems.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðeɪ kæn sɑːlv ˈkɑːmpleks ˈprɑːbləmz/</span>
+                        <span class="pronunciation-text">(DHÊI kén SÓLV CÓM-pleks PRÓ-blãmz)</span>
+                        <span class="translation-text">Eles sabem/podem resolver problemas complexos.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        My sister <span class="example-word">can draw</span> amazing pictures.
+                        <button class="audio-btn" onclick="playAudio('My sister can draw amazing pictures.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/maɪ ˈsɪstər kæn drɔː əˈmeɪzɪŋ ˈpɪktʃərz/</span>
+                        <span class="pronunciation-text">(MÁI SÊS-tãr kén DRÓ ã-MÊI-zin PÊK-tchãrz)</span>
+                        <span class="translation-text">Minha irmã sabe/pode desenhar figuras incríveis.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        Birds <span class="example-word">can fly</span>.
+                        <button class="audio-btn" onclick="playAudio('Birds can fly.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/bɜːrdz kæn flaɪ/</span>
+                        <span class="pronunciation-text">(BÃRDZ kén FLÁI)</span>
+                        <span class="translation-text">Pássaros podem voar.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">can run</span> very fast.
+                        <button class="audio-btn" onclick="playAudio('He can run very fast.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiː kæn rʌn ˈveri fæst/</span>
+                        <span class="pronunciation-text">(RÍI kén RÂN VÉ-ri FÉST)</span>
+                        <span class="translation-text">Ele consegue correr muito rápido.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        She <span class="example-word">can sing</span> beautifully.
+                        <button class="audio-btn" onclick="playAudio('She can sing beautifully.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ʃiː kæn sɪŋ ˈbjuːtɪfəli/</span>
+                        <span class="pronunciation-text">(XÍI kén SÊNG BIÚ-ti-fu-li)</span>
+                        <span class="translation-text">Ela sabe cantar lindamente.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        We <span class="example-word">can build</span> a sandcastle.
+                        <button class="audio-btn" onclick="playAudio('We can build a sandcastle.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wiː kæn bɪld ə ˈsændˌkæsəl/</span>
+                        <span class="pronunciation-text">(UÍI kén BÊLD ã SÉND-kés-sou)</span>
+                        <span class="translation-text">Nós podemos construir um castelo de areia.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        They <span class="example-word">can speak</span> Japanese.
+                        <button class="audio-btn" onclick="playAudio('They can speak Japanese.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðeɪ kæn spiːk ˌdʒæpəˈniːz/</span>
+                        <span class="pronunciation-text">(DHÊI kén SPÍIK djé-pã-NÍIZ)</span>
+                        <span class="translation-text">Eles sabem falar japonês.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        My dad <span class="example-word">can fix</span> anything.
+                        <button class="audio-btn" onclick="playAudio('My dad can fix anything.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/maɪ dæd kæn fɪks ˈeniθɪŋ/</span>
+                        <span class="pronunciation-text">(MÁI DÉD kén FÊKS É-ni-thên)</span>
+                        <span class="translation-text">Meu pai sabe consertar qualquer coisa.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        You <span class="example-word">can use</span> my pen.
+                        <button class="audio-btn" onclick="playAudio('You can use my pen.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/juː kæn juːz maɪ pen/</span>
+                        <span class="pronunciation-text">(IÚU kén IÚUZ mái PÉN)</span>
+                        <span class="translation-text">Você pode usar minha caneta.</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Section 17.3 Negative & Interrogative (Can) -->
+    <section>
+        <h2>17.3 Negativas e Interrogativas com "Can" ❓🚫</h2>
+        <div class="card">
+            <p><strong>Negativa:</strong> Sujeito + cannot (can't) + Verbo.</p>
+            <p><strong>Interrogativa:</strong> Can + Sujeito + Verbo?</p>
+        </div>
+
+        <table class="mobile-table">
+            <thead>
+                <tr>
+                    <th>Inglês</th>
+                    <th>Detalhes (Fonética & Tradução)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Negative -->
+                <tr>
+                    <td class="col-english">
+                        I <span class="example-word">can't play</span> the violin.
+                        <button class="audio-btn" onclick="playAudio('I can\'t play the violin.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/aɪ kænt pleɪ ðə ˌvaɪəˈlɪn/</span>
+                        <span class="pronunciation-text">(ÁI KÉNT PLÊI dhã vái-õ-LÊN)</span>
+                        <span class="translation-text">Eu não sei/posso tocar violino.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        You <span class="example-word">can't see</span> the stars tonight; it's too cloudy.
+                        <button class="audio-btn" onclick="playAudio('You can\'t see the stars tonight; it\'s too cloudy.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/juː kænt siː ðə stɑːrz təˈnaɪt ɪts tuː ˈklaʊdi/</span>
+                        <span class="pronunciation-text">(IÚU KÉNT SÍI dhã STÁRZ tã-NÁIT; êts TÚU CLÁU-di)</span>
+                        <span class="translation-text">Você não pode ver as estrelas hoje à noite; está muito nublado.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">can't cook</span> very well.
+                        <button class="audio-btn" onclick="playAudio('He can\'t cook very well.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiː kænt kʊk ˈveri wel/</span>
+                        <span class="pronunciation-text">(RÍI KÉNT CÚK VÉ-ri UÉL)</span>
+                        <span class="translation-text">Ele não sabe cozinhar muito bem.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        She <span class="example-word">can't speak</span> German.
+                        <button class="audio-btn" onclick="playAudio('She can\'t speak German.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ʃiː kænt spiːk ˈdʒɜːrmən/</span>
+                        <span class="pronunciation-text">(XÍI KÉNT SPÍIK DJÃR-mãn)</span>
+                        <span class="translation-text">Ela não sabe falar alemão.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        We <span class="example-word">can't go</span> to the concert; it's sold out.
+                        <button class="audio-btn" onclick="playAudio('We can\'t go to the concert; it\'s sold out.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wiː kænt ɡoʊ tə ðə ˈkɑːnsərt ɪts soʊld aʊt/</span>
+                        <span class="pronunciation-text">(UÍI KÉNT GÔU tã dhã CÓN-sãrt; êts SÔULD ÁUT)</span>
+                        <span class="translation-text">Nós não podemos ir ao show; está esgotado.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        They <span class="example-word">can't find</span> their keys.
+                        <button class="audio-btn" onclick="playAudio('They can\'t find their keys.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðeɪ kænt faɪnd ðer kiːz/</span>
+                        <span class="pronunciation-text">(DHÊI KÉNT FÁIND dhér KÍIZ)</span>
+                        <span class="translation-text">Eles não conseguem encontrar as chaves deles.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        My little brother <span class="example-word">can't ride</span> a bike yet.
+                        <button class="audio-btn" onclick="playAudio('My little brother can\'t ride a bike yet.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/maɪ ˈlɪtl ˈbrʌðər kænt raɪd ə baɪk jet/</span>
+                        <span class="pronunciation-text">(MÁI LÊ-tõl BRÂ-dhãr KÉNT RÁID ã BÁIK IÉT)</span>
+                        <span class="translation-text">Meu irmãozinho ainda não sabe andar de bicicleta.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        I <span class="example-word">cannot understand</span> this problem.
+                        <button class="audio-btn" onclick="playAudio('I cannot understand this problem.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/aɪ ˈkænɑːt ˌʌndərˈstænd ðɪs ˈprɑːbləm/</span>
+                        <span class="pronunciation-text">(ÁI KÉ-nót ân-dãr-STÉND DHÊS PRÓ-blãm)</span>
+                        <span class="translation-text">Eu não consigo entender este problema.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">can't drive</span> a manual car.
+                        <button class="audio-btn" onclick="playAudio('He can\'t drive a manual car.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiː kænt draɪv ə ˈmænjuəl kɑːr/</span>
+                        <span class="pronunciation-text">(RÍI KÉNT DRÁIV ã MÉ-niu-õl CÁR)</span>
+                        <span class="translation-text">Ele não sabe dirigir carro manual.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        She <span class="example-word">can't remember</span> my name.
+                        <button class="audio-btn" onclick="playAudio('She can\'t remember my name.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ʃiː kænt rɪˈmembər maɪ neɪm/</span>
+                        <span class="pronunciation-text">(XÍI KÉNT ri-MÉM-bãr mái NÊIM)</span>
+                        <span class="translation-text">Ela não consegue lembrar meu nome.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        You <span class="example-word">can't park</span> here.
+                        <button class="audio-btn" onclick="playAudio('You can\'t park here.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/juː kænt pɑːrk hɪər/</span>
+                        <span class="pronunciation-text">(IÚU KÉNT PÁRK RÍIR)</span>
+                        <span class="translation-text">Você não pode estacionar aqui.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        We <span class="example-word">can't hear</span> the music.
+                        <button class="audio-btn" onclick="playAudio('We can\'t hear the music.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wiː kænt hɪər ðə ˈmjuːzɪk/</span>
+                        <span class="pronunciation-text">(UÍI KÉNT RÍIR dhã MIÚU-zêk)</span>
+                        <span class="translation-text">Nós não conseguimos ouvir a música.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        They <span class="example-word">can't come</span> with us.
+                        <button class="audio-btn" onclick="playAudio('They can\'t come with us.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðeɪ kænt kʌm wɪθ əs/</span>
+                        <span class="pronunciation-text">(DHÊI KÉNT CÂM uêTH ÃS)</span>
+                        <span class="translation-text">Eles não podem vir conosco.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        A fish <span class="example-word">can't walk</span>.
+                        <button class="audio-btn" onclick="playAudio('A fish can\'t walk.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ə fɪʃ kænt wɔːk/</span>
+                        <span class="pronunciation-text">(ã FÊSH KÉNT UÓK)</span>
+                        <span class="translation-text">Um peixe não pode andar.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        I <span class="example-word">can't believe</span> it!
+                        <button class="audio-btn" onclick="playAudio('I can\'t believe it.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/aɪ kænt bɪˈliːv ɪt/</span>
+                        <span class="pronunciation-text">(ÁI KÉNT bi-LÍIV êt)</span>
+                        <span class="translation-text">Eu não posso acreditar!</span>
+                    </td>
+                </tr>
+
+                <!-- Interrogative -->
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Can</span> I <span class="example-word">help</span> you?
+                        <button class="audio-btn" onclick="playAudio('Can I help you?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kæn aɪ help juː/</span>
+                        <span class="pronunciation-text">(KÉN ái RÉLP iúu?)</span>
+                        <span class="translation-text">Posso te ajudar?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Can</span> you <span class="example-word">speak</span> Spanish?
+                        <button class="audio-btn" onclick="playAudio('Can you speak Spanish?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kæn juː spiːk ˈspænɪʃ/</span>
+                        <span class="pronunciation-text">(KÉN iúu SPÍIK SPÉ-nêsh?)</span>
+                        <span class="translation-text">Você sabe falar espanhol?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Can</span> he <span class="example-word">play</span> chess?
+                        <button class="audio-btn" onclick="playAudio('Can he play chess?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kæn hiː pleɪ tʃes/</span>
+                        <span class="pronunciation-text">(KÉN ríi PLÊI TCHÉS?)</span>
+                        <span class="translation-text">Ele sabe jogar xadrez?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Can</span> she <span class="example-word">sing</span> well?
+                        <button class="audio-btn" onclick="playAudio('Can she sing well?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kæn ʃiː sɪŋ wel/</span>
+                        <span class="pronunciation-text">(KÉN xíi SÊNG UÉL?)</span>
+                        <span class="translation-text">Ela canta bem?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Can</span> we <span class="example-word">finish</span> this project today?
+                        <button class="audio-btn" onclick="playAudio('Can we finish this project today?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kæn wiː ˈfɪnɪʃ ðɪs ˈprɑːdʒekt təˈdeɪ/</span>
+                        <span class="pronunciation-text">(KÉN uíi FÊ-nêsh DHÊS PRÓ-djekt tã-DÊI?)</span>
+                        <span class="translation-text">Nós conseguimos terminar este projeto hoje?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Can</span> they <span class="example-word">come</span> to the meeting?
+                        <button class="audio-btn" onclick="playAudio('Can they come to the meeting?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kæn ðeɪ kʌm tə ðə ˈmiːtɪŋ/</span>
+                        <span class="pronunciation-text">(KÉN dhêi CÂM tã dhã MÍI-rin?)</span>
+                        <span class="translation-text">Eles podem vir à reunião?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Can</span> your father <span class="example-word">fix</span> this computer?
+                        <button class="audio-btn" onclick="playAudio('Can your father fix this computer?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kæn jɔːr ˈfɑːðər fɪks ðɪs kəmˈpjuːtər/</span>
+                        <span class="pronunciation-text">(KÉN iór FÁ-dhãr FÊKS DHÊS cãm-PIÚU-tãr?)</span>
+                        <span class="translation-text">Seu pai consegue consertar este computador?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Can</span> you <span class="example-word">drive</span> a truck?
+                        <button class="audio-btn" onclick="playAudio('Can you drive a truck?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kæn juː draɪv ə trʌk/</span>
+                        <span class="pronunciation-text">(KÉN iúu DRÁIV ã TRÂK?)</span>
+                        <span class="translation-text">Você sabe dirigir um caminhão?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Can</span> she <span class="example-word">bake</span> a cake?
+                        <button class="audio-btn" onclick="playAudio('Can she bake a cake?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kæn ʃiː beɪk ə keɪk/</span>
+                        <span class="pronunciation-text">(KÉN xíi BÊIK ã KÊIK?)</span>
+                        <span class="translation-text">Ela sabe fazer bolo?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Can</span> they <span class="example-word">understand</span> French?
+                        <button class="audio-btn" onclick="playAudio('Can they understand French?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kæn ðeɪ ˌʌndərˈstænd frentʃ/</span>
+                        <span class="pronunciation-text">(KÉN dhêi ân-dãr-STÉND FRÊNTCH?)</span>
+                        <span class="translation-text">Eles entendem francês?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Can</span> I <span class="example-word">have</span> some water?
+                        <button class="audio-btn" onclick="playAudio('Can I have some water?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kæn aɪ hæv səm ˈwɔːtər/</span>
+                        <span class="pronunciation-text">(KÉN ái RÉV sãm UÓ-tãr?)</span>
+                        <span class="translation-text">Posso pegar um pouco de água?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Can</span> you <span class="example-word">open</span> the door?
+                        <button class="audio-btn" onclick="playAudio('Can you open the door?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kæn juː ˈoʊpən ðə dɔːr/</span>
+                        <span class="pronunciation-text">(KÉN iúu ÔU-pãn dhã DÓR?)</span>
+                        <span class="translation-text">Você pode abrir a porta?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Can</span> he <span class="example-word">join</span> our team?
+                        <button class="audio-btn" onclick="playAudio('Can he join our team?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kæn hiː dʒɔɪn aʊər tiːm/</span>
+                        <span class="pronunciation-text">(KÉN ríi DJÓIN áu-ãr TÍIM?)</span>
+                        <span class="translation-text">Ele pode se juntar ao nosso time?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Can</span> we <span class="example-word">start</span> now?
+                        <button class="audio-btn" onclick="playAudio('Can we start now?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kæn wiː stɑːrt naʊ/</span>
+                        <span class="pronunciation-text">(KÉN uíi STÁRT NÁU?)</span>
+                        <span class="translation-text">Podemos começar agora?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Can</span> they <span class="example-word">see</span> us from there?
+                        <button class="audio-btn" onclick="playAudio('Can they see us from there?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kæn ðeɪ siː əs frəm ðer/</span>
+                        <span class="pronunciation-text">(KÉN dhêi SÍI ãs frãm DHÉR?)</span>
+                        <span class="translation-text">Eles conseguem nos ver de lá?</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Section 17.4 Permission (Can I?) -->
+    <section>
+        <h2>17.4 Permissão no Presente: "Can I...?" 🙋</h2>
+        <div class="card">
+            <p><strong>"Can"</strong> é usado para pedir ou dar permissão de forma informal.</p>
+            <ul style="padding-left: 20px;">
+                <li><span class="example-word">Can I</span> use your phone? <button class="audio-btn" onclick="playAudio('Can I use your phone?')">🔊</button></li>
+                <li>Yes, you <span class="example-word">can</span>. <button class="audio-btn" onclick="playAudio('Yes, you can.')">🔊</button></li>
+                <li>No, you <span class="example-word">can't</span>. <button class="audio-btn" onclick="playAudio('No, you can\'t.')">🔊</button></li>
+                <li><span class="example-word">Can we</span> sit here? <button class="audio-btn" onclick="playAudio('Can we sit here?')">🔊</button></li>
+                <li><span class="example-word">Can I</span> ask a question? <button class="audio-btn" onclick="playAudio('Can I ask a question?')">🔊</button></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Section 17.5 Could Ability -->
+    <section>
+        <h2>17.5 Habilidade no Passado: "Could" (Eu conseguia, eu podia) 🕰️</h2>
+        <p><strong>"Could"</strong> é o passado de "can".</p>
+
+        <table class="mobile-table">
+            <thead>
+                <tr>
+                    <th>Frase em Inglês</th>
+                    <th>Detalhes (Fonética & Tradução)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-english">
+                        When I was young, I <span class="example-word">could run</span> very fast.
+                        <button class="audio-btn" onclick="playAudio('When I was young, I could run very fast.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wen aɪ wəz jʌŋ aɪ kəd rʌn ˈveri fæst/</span>
+                        <span class="pronunciation-text">(UÉN ái uãz IÂN, ái cãd RÂN VÉ-ri FÉST)</span>
+                        <span class="translation-text">Quando eu era jovem, eu conseguia correr muito rápido.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        She <span class="example-word">could speak</span> three languages by the age of ten.
+                        <button class="audio-btn" onclick="playAudio('She could speak three languages by the age of ten.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ʃiː kəd spiːk θriː ˈlæŋɡwɪdʒɪz baɪ ði eɪdʒ əv ten/</span>
+                        <span class="pronunciation-text">(XÍI cãd SPÍIK THRÍI LÉN-guê-djêz bái dhí ÊIDJ óv TÉN)</span>
+                        <span class="translation-text">Ela conseguia falar três idiomas aos dez anos.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">could play</span> the guitar when he was a teenager.
+                        <button class="audio-btn" onclick="playAudio('He could play the guitar when he was a teenager.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiː kəd pleɪ ðə ɡɪˈtɑːr wen hiː wəz ə ˈtiːneɪdʒər/</span>
+                        <span class="pronunciation-text">(RÍI cãd PLÊI dhã gui-TÁR UÉN ríi uãz ã TÍI-nei-djãr)</span>
+                        <span class="translation-text">Ele sabia tocar violão quando era adolescente.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        We <span class="example-word">could see</span> the mountains from our old house.
+                        <button class="audio-btn" onclick="playAudio('We could see the mountains from our old house.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wiː kəd siː ðə ˈmaʊntnz frəm aʊər oʊld haʊs/</span>
+                        <span class="pronunciation-text">(UÍI cãd SÍI dhã MÁUN-tãnz frãm áu-ãr ÔULD RÁUS)</span>
+                        <span class="translation-text">Nós conseguíamos ver as montanhas da nossa casa antiga.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        They <span class="example-word">could swim</span> across the river.
+                        <button class="audio-btn" onclick="playAudio('They could swim across the river.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðeɪ kəd swɪm əˈkrɔːs ðə ˈrɪvər/</span>
+                        <span class="pronunciation-text">(DHÊI cãd SUÊM ã-CRÓS dhã RÊ-vãr)</span>
+                        <span class="translation-text">Eles conseguiam atravessar o rio a nado.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        I <span class="example-word">could climb</span> trees easily.
+                        <button class="audio-btn" onclick="playAudio('I could climb trees easily.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/aɪ kəd klaɪm triːz ˈiːzəli/</span>
+                        <span class="pronunciation-text">(ÁI cãd CLÁIM TRÍIZ ÍI-zã-li)</span>
+                        <span class="translation-text">Eu conseguia subir em árvores facilmente.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        You <span class="example-word">could see</span> the stars clearly.
+                        <button class="audio-btn" onclick="playAudio('You could see the stars clearly.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/juː kəd siː ðə stɑːrz ˈklɪrli/</span>
+                        <span class="pronunciation-text">(IÚU cãd SÍI dhã STÁRZ CLÍR-li)</span>
+                        <span class="translation-text">Você conseguia ver as estrelas nitidamente.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">could memorize</span> long poems.
+                        <button class="audio-btn" onclick="playAudio('He could memorize long poems.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiː kəd ˈmeməraɪz lɔːŋ ˈpoʊəmz/</span>
+                        <span class="pronunciation-text">(RÍI cãd MÉ-mõ-ráiz LÓN PÔU-ãmz)</span>
+                        <span class="translation-text">Ele conseguia memorizar longos poemas.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        She <span class="example-word">could draw</span> portraits.
+                        <button class="audio-btn" onclick="playAudio('She could draw portraits.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ʃiː kəd drɔː ˈpɔːrtrəts/</span>
+                        <span class="pronunciation-text">(XÍI cãd DRÓ PÓR-trêts)</span>
+                        <span class="translation-text">Ela sabia desenhar retratos.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        We <span class="example-word">could play</span> outside all day.
+                        <button class="audio-btn" onclick="playAudio('We could play outside all day.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wiː kəd pleɪ ˌaʊtˈsaɪd ɔːl deɪ/</span>
+                        <span class="pronunciation-text">(UÍI cãd PLÊI áut-SÁID ól DÊI)</span>
+                        <span class="translation-text">Nós podíamos brincar lá fora o dia todo.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        They <span class="example-word">could hear</span> the ocean from their room.
+                        <button class="audio-btn" onclick="playAudio('They could hear the ocean from their room.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðeɪ kəd hɪər ði ˈoʊʃn frəm ðer ruːm/</span>
+                        <span class="pronunciation-text">(DHÊI cãd RÍIR dhí ÔU-shãn frãm dhér RÚUM)</span>
+                        <span class="translation-text">Eles conseguiam ouvir o oceano do quarto deles.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        My grandmother <span class="example-word">could bake</span> the best cakes.
+                        <button class="audio-btn" onclick="playAudio('My grandmother could bake the best cakes.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/maɪ ˈɡrænmʌðər kəd beɪk ðə best keɪks/</span>
+                        <span class="pronunciation-text">(MÁI GRÉND-mâ-dhãr cãd BÊIK dhã BÉST KÊIKS)</span>
+                        <span class="translation-text">Minha avó sabia fazer os melhores bolos.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">could understand</span> what the teacher said.
+                        <button class="audio-btn" onclick="playAudio('He could understand what the teacher said.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiː kəd ˌʌndərˈstænd wʌt ðə ˈtiːtʃər sed/</span>
+                        <span class="pronunciation-text">(RÍI cãd ân-dãr-STÉND uót dhã TÍI-tchãr SÉD)</span>
+                        <span class="translation-text">Ele conseguiu entender o que o professor disse.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        I <span class="example-word">could feel</span> the tension in the room.
+                        <button class="audio-btn" onclick="playAudio('I could feel the tension in the room.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/aɪ kəd fiːl ðə ˈtenʃn ɪn ðə ruːm/</span>
+                        <span class="pronunciation-text">(ÁI cãd FÍIL dhã TÉN-shãn ên dhã RÚUM)</span>
+                        <span class="translation-text">Eu podia sentir a tensão na sala.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        She <span class="example-word">could remember</span> every detail.
+                        <button class="audio-btn" onclick="playAudio('She could remember every detail.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ʃiː kəd rɪˈmembər ˈevri ˈdiːteɪl/</span>
+                        <span class="pronunciation-text">(XÍI cãd ri-MÉM-bãr ÉV-ri DÍI-teil)</span>
+                        <span class="translation-text">Ela conseguia se lembrar de cada detalhe.</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Section 17.6 Negative & Interrogative (Could) -->
+    <section>
+        <h2>17.6 Negativas e Interrogativas com "Could" ❓🚫</h2>
+        <table class="mobile-table">
+            <thead>
+                <tr>
+                    <th>Inglês</th>
+                    <th>Detalhes (Fonética & Tradução)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Negative -->
+                <tr>
+                    <td class="col-english">
+                        I <span class="example-word">couldn't understand</span> him at first.
+                        <button class="audio-btn" onclick="playAudio('I couldn\'t understand him at first.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/aɪ ˈkʊdnt ˌʌndərˈstænd ɪm æt fɜːrst/</span>
+                        <span class="pronunciation-text">(ÁI CÚ-dãnt ân-dãr-STÉND îm ét FÃRST)</span>
+                        <span class="translation-text">Eu não consegui entendê-lo no início.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        She <span class="example-word">couldn't ride</span> a horse when she was younger.
+                        <button class="audio-btn" onclick="playAudio('She couldn\'t ride a horse when she was younger.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ʃiː ˈkʊdnt raɪd ə hɔːrs wen ʃiː wəz ˈjʌŋɡər/</span>
+                        <span class="pronunciation-text">(XÍI CÚ-dãnt RÁID ã RÓRS UÉN xíi uãz IÂN-gãr)</span>
+                        <span class="translation-text">Ela não sabia andar a cavalo quando era mais jovem.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">couldn't find</span> his keys yesterday.
+                        <button class="audio-btn" onclick="playAudio('He couldn\'t find his keys yesterday.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiː ˈkʊdnt faɪnd hɪz kiːz ˈjestərdeɪ/</span>
+                        <span class="pronunciation-text">(RÍI CÚ-dãnt FÁIND rêz KÍIZ IÉS-tãr-dei)</span>
+                        <span class="translation-text">Ele não conseguiu encontrar as chaves dele ontem.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        We <span class="example-word">couldn't go</span> to the party because we were busy.
+                        <button class="audio-btn" onclick="playAudio('We couldn\'t go to the party because we were busy.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wiː ˈkʊdnt ɡoʊ tə ðə ˈpɑːrti bɪˈkɔːz wiː wər ˈbɪzi/</span>
+                        <span class="pronunciation-text">(UÍI CÚ-dãnt GÔU tã dhã PÁR-ti bi-CÓZ uíi uãr BÊ-zi)</span>
+                        <span class="translation-text">Nós não pudemos ir à festa porque estávamos ocupados.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        They <span class="example-word">couldn't cook</span> that complicated recipe.
+                        <button class="audio-btn" onclick="playAudio('They couldn\'t cook that complicated recipe.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðeɪ ˈkʊdnt kʊk ðæt ˈkɑːmplɪkeɪtɪd ˈresəpi/</span>
+                        <span class="pronunciation-text">(DHÊI CÚ-dãnt CÚK DHÉT CÓM-plĩ-kei-têd RÉ-sã-pi)</span>
+                        <span class="translation-text">Eles não conseguiram cozinhar aquela receita complicada.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        I <span class="example-word">couldn't solve</span> the puzzle.
+                        <button class="audio-btn" onclick="playAudio('I couldn\'t solve the puzzle.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/aɪ ˈkʊdnt sɑːlv ðə ˈpʌzəl/</span>
+                        <span class="pronunciation-text">(ÁI CÚ-dãnt SÓLV dhã PÂ-zõl)</span>
+                        <span class="translation-text">Eu não consegui resolver o quebra-cabeça.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        You <span class="example-word">couldn't see</span> the road in the fog.
+                        <button class="audio-btn" onclick="playAudio('You couldn\'t see the road in the fog.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/juː ˈkʊdnt siː ðə roʊd ɪn ðə fɑːɡ/</span>
+                        <span class="pronunciation-text">(IÚU CÚ-dãnt SÍI dhã RÔUD ên dhã FÓG)</span>
+                        <span class="translation-text">Você não conseguia ver a estrada na neblina.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">couldn't lift</span> the heavy box.
+                        <button class="audio-btn" onclick="playAudio('He couldn\'t lift the heavy box.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiː ˈkʊdnt lɪft ðə ˈhevi bɑːks/</span>
+                        <span class="pronunciation-text">(RÍI CÚ-dãnt LÊFT dhã RÉ-vi BÓKS)</span>
+                        <span class="translation-text">Ele não conseguiu levantar a caixa pesada.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        She <span class="example-word">couldn't believe</span> her eyes.
+                        <button class="audio-btn" onclick="playAudio('She couldn\'t believe her eyes.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ʃiː ˈkʊdnt bɪˈliːv hər aɪz/</span>
+                        <span class="pronunciation-text">(XÍI CÚ-dãnt bi-LÍIV rãr ÁIZ)</span>
+                        <span class="translation-text">Ela não podia acreditar nos seus olhos.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        We <span class="example-word">couldn't get</span> tickets for the show.
+                        <button class="audio-btn" onclick="playAudio('We couldn\'t get tickets for the show.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wiː ˈkʊdnt ɡet ˈtɪkɪts fər ðə ʃoʊ/</span>
+                        <span class="pronunciation-text">(UÍI CÚ-dãnt GUÉT TÊ-kêts fór dhã XÔU)</span>
+                        <span class="translation-text">Nós não conseguimos ingressos para o show.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        They <span class="example-word">couldn't finish</span> the race.
+                        <button class="audio-btn" onclick="playAudio('They couldn\'t finish the race.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ðeɪ ˈkʊdnt ˈfɪnɪʃ ðə reɪs/</span>
+                        <span class="pronunciation-text">(DHÊI CÚ-dãnt FÊ-nêsh dhã RÊIS)</span>
+                        <span class="translation-text">Eles não conseguiram terminar a corrida.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        I <span class="example-word">couldn't sleep</span> last night.
+                        <button class="audio-btn" onclick="playAudio('I couldn\'t sleep last night.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/aɪ ˈkʊdnt sliːp læst naɪt/</span>
+                        <span class="pronunciation-text">(ÁI CÚ-dãnt SLÍIP lést NÁIT)</span>
+                        <span class="translation-text">Eu não consegui dormir na noite passada.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        He <span class="example-word">couldn't remember</span> where he put his wallet.
+                        <button class="audio-btn" onclick="playAudio('He couldn\'t remember where he put his wallet.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/hiː ˈkʊdnt rɪˈmembər wer hiː pʊt hɪz ˈwɑːlɪt/</span>
+                        <span class="pronunciation-text">(RÍI CÚ-dãnt ri-MÉM-bãr uér ríi PÚT rêz UÓ-lêt)</span>
+                        <span class="translation-text">Ele não conseguia lembrar onde colocou sua carteira.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        She <span class="example-word">couldn't come</span> to the phone.
+                        <button class="audio-btn" onclick="playAudio('She couldn\'t come to the phone.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/ʃiː ˈkʊdnt kʌm tə ðə foʊn/</span>
+                        <span class="pronunciation-text">(XÍI CÚ-dãnt CÂM tã dhã FÔUN)</span>
+                        <span class="translation-text">Ela não pôde atender ao telefone.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        We <span class="example-word">couldn't agree</span> on a plan.
+                        <button class="audio-btn" onclick="playAudio('We couldn\'t agree on a plan.')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wiː ˈkʊdnt əˈɡriː ɑːn ə plæn/</span>
+                        <span class="pronunciation-text">(UÍI CÚ-dãnt ã-GRÍI ón ã PLÉN)</span>
+                        <span class="translation-text">Nós não conseguimos concordar em um plano.</span>
+                    </td>
+                </tr>
+
+                <!-- Interrogative -->
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Could</span> you <span class="example-word">swim</span> when you were five?
+                        <button class="audio-btn" onclick="playAudio('Could you swim when you were five?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kəd juː swɪm wen juː wər faɪv/</span>
+                        <span class="pronunciation-text">(CÃD IÚU SUÊM UÉN iúu uãr FÁIV?)</span>
+                        <span class="translation-text">Você sabia nadar quando tinha cinco anos?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Could</span> he <span class="example-word">speak</span> English before he moved here?
+                        <button class="audio-btn" onclick="playAudio('Could he speak English before he moved here?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kəd hiː spiːk ˈɪŋɡlɪʃ bɪˈfɔːr hiː muːvd hɪr/</span>
+                        <span class="pronunciation-text">(CÃD RÍI SPÍIK ÊN-glêsh bi-FÓR ríi MÚUVD RÍIR?)</span>
+                        <span class="translation-text">Ele sabia falar inglês antes de se mudar para cá?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Could</span> she <span class="example-word">play</span> any instruments as a child?
+                        <button class="audio-btn" onclick="playAudio('Could she play any instruments as a child?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kəd ʃiː pleɪ ˈeni ˈɪnstrəmənts æz ə tʃaɪld/</span>
+                        <span class="pronunciation-text">(CÃD XÍI PLÊI É-ni ÊNS-trõ-mãnts éz ã TCHÁILD?)</span>
+                        <span class="translation-text">Ela sabia tocar algum instrumento quando criança?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Could</span> they <span class="example-word">understand</span> the instructions?
+                        <button class="audio-btn" onclick="playAudio('Could they understand the instructions?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kəd ðeɪ ˌʌndərˈstænd ði ɪnˈstrʌkʃnz/</span>
+                        <span class="pronunciation-text">(CÃD DHÊI ân-dãr-STÉND dhí în-STRÂK-shãnz?)</span>
+                        <span class="translation-text">Eles conseguiram entender as instruções?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        What <span class="example-word">could</span> you <span class="example-word">do</span> when you were younger that you can't do now?
+                        <button class="audio-btn" onclick="playAudio('What could you do when you were younger that you can\'t do now?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/wʌt kəd juː duː wen juː wər ˈjʌŋɡər ðæt juː kænt duː naʊ/</span>
+                        <span class="pronunciation-text">(UÓT cãd IÚU DÚU UÉN iúu uãr IÂN-gãr DHÉT iúu KÉNT DÚU NÁU?)</span>
+                        <span class="translation-text">O que você conseguia fazer quando era mais novo(a) que não consegue fazer agora?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Could</span> you <span class="example-word">tell</span> me where the station is?
+                        <button class="audio-btn" onclick="playAudio('Could you tell me where the station is?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kəd juː tel miː wer ðə ˈsteɪʃn ɪz/</span>
+                        <span class="pronunciation-text">(CÃD iúu TÉL míi uér dhã STÊI-shãn êz?)</span>
+                        <span class="translation-text">Você poderia me dizer onde fica a estação?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Could</span> he <span class="example-word">read</span> before he started school?
+                        <button class="audio-btn" onclick="playAudio('Could he read before he started school?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kəd hiː riːd bɪˈfɔːr hiː ˈstɑːrtɪd skuːl/</span>
+                        <span class="pronunciation-text">(CÃD ríi RÍID bi-FÓR ríi STÁR-têd SCÚUL?)</span>
+                        <span class="translation-text">Ele sabia ler antes de começar a escola?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Could</span> she <span class="example-word">finish</span> her homework on time?
+                        <button class="audio-btn" onclick="playAudio('Could she finish her homework on time?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kəd ʃiː ˈfɪnɪʃ hər ˈhoʊmwɜːrk ɑːn taɪm/</span>
+                        <span class="pronunciation-text">(CÃD xíi FÊ-nêsh rãr RÔUM-uãrk ón TÁIM?)</span>
+                        <span class="translation-text">Ela conseguiu terminar o dever de casa a tempo?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Could</span> we <span class="example-word">ask</span> you a question?
+                        <button class="audio-btn" onclick="playAudio('Could we ask you a question?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kəd wiː æsk juː ə ˈkwestʃən/</span>
+                        <span class="pronunciation-text">(CÃD uíi ÉSK iúu ã CUÉS-tchãn?)</span>
+                        <span class="translation-text">Nós poderíamos te fazer uma pergunta?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Could</span> they <span class="example-word">visit</span> us last summer?
+                        <button class="audio-btn" onclick="playAudio('Could they visit us last summer?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kəd ðeɪ ˈvɪzɪt əs læst ˈsʌmər/</span>
+                        <span class="pronunciation-text">(CÃD dhêi VÊ-zêt ãs LÉST SÂ-mãr?)</span>
+                        <span class="translation-text">Eles puderam nos visitar no verão passado?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Could</span> you please <span class="example-word">be</span> quiet?
+                        <button class="audio-btn" onclick="playAudio('Could you please be quiet?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kəd juː pliːz biː ˈkwaɪət/</span>
+                        <span class="pronunciation-text">(CÃD iúu PLÍIZ bí CUÁI-êt?)</span>
+                        <span class="translation-text">Você poderia, por favor, ficar quieto?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Could</span> I <span class="example-word">use</span> your bathroom?
+                        <button class="audio-btn" onclick="playAudio('Could I use your bathroom?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kəd aɪ juːz jɔːr ˈbæθruːm/</span>
+                        <span class="pronunciation-text">(CÃD ái IÚUZ iór BÉTH-rúum?)</span>
+                        <span class="translation-text">Eu poderia usar seu banheiro?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Could</span> he <span class="example-word">explain</span> that again?
+                        <button class="audio-btn" onclick="playAudio('Could he explain that again?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kəd hiː ɪkˈspleɪn ðæt əˈɡen/</span>
+                        <span class="pronunciation-text">(CÃD ríi êks-PLÊIN dhét ã-GUÉN?)</span>
+                        <span class="translation-text">Ele poderia explicar aquilo de novo?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Could</span> she <span class="example-word">have known</span> the truth?
+                        <button class="audio-btn" onclick="playAudio('Could she have known the truth?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kəd ʃiː həv noʊn ðə truːθ/</span>
+                        <span class="pronunciation-text">(CÃD xíi rév NÔUN dhã TRÚUTH?)</span>
+                        <span class="translation-text">Ela poderia saber a verdade?</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-english">
+                        <span class="example-word">Could</span> you <span class="example-word">do</span> me a favor?
+                        <button class="audio-btn" onclick="playAudio('Could you do me a favor?')">🔊</button>
+                    </td>
+                    <td class="col-details">
+                        <span class="ipa-text">/kəd juː duː miː ə ˈfeɪvər/</span>
+                        <span class="pronunciation-text">(CÃD iúu DÚU míi ã FÊI-vãr?)</span>
+                        <span class="translation-text">Você poderia me fazer um favor?</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Section 17.7 Polite Requests -->
+    <section>
+        <h2>17.7 Pedidos Educados: "Could you...?" 🙏</h2>
+        <div class="card">
+            <p><strong>"Could"</strong> é mais educado e formal que "Can".</p>
+            <ul style="padding-left: 20px;">
+                <li><span class="example-word">Could you</span> help me? <button class="audio-btn" onclick="playAudio('Could you help me?')">🔊</button></li>
+                <li><span class="example-word">Could I</span> borrow your pen? <button class="audio-btn" onclick="playAudio('Could I borrow your pen?')">🔊</button></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Vocabulary Section -->
+    <section>
+        <h2>Vocabulário: Habilidades e Pedidos 📚</h2>
+        <div class="card">
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Play</span> (instrument) <button class="audio-btn" onclick="playAudio('Play')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/pleɪ/</span>
+                    <span class="pronunciation-text">(PLÊI)</span>
+                    <span class="translation-text">Tocar (instrumento)</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: Can you play the guitar?</em> <button class="audio-btn" onclick="playAudio('Can you play the guitar?')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Speak</span> <button class="audio-btn" onclick="playAudio('Speak')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/spiːk/</span>
+                    <span class="pronunciation-text">(SPÍIK)</span>
+                    <span class="translation-text">Falar (idioma)</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: She can speak three languages.</em> <button class="audio-btn" onclick="playAudio('She can speak three languages.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Cook</span> <button class="audio-btn" onclick="playAudio('Cook')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/kʊk/</span>
+                    <span class="pronunciation-text">(CÚK)</span>
+                    <span class="translation-text">Cozinhar</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: I can't cook very well.</em> <button class="audio-btn" onclick="playAudio('I can\'t cook very well.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Swim</span> <button class="audio-btn" onclick="playAudio('Swim')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/swɪm/</span>
+                    <span class="pronunciation-text">(SUÊM)</span>
+                    <span class="translation-text">Nadar</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: Could you swim when you were a child?</em> <button class="audio-btn" onclick="playAudio('Could you swim when you were a child?')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Dance</span> <button class="audio-btn" onclick="playAudio('Dance')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/dæns/</span>
+                    <span class="pronunciation-text">(DÉNS)</span>
+                    <span class="translation-text">Dançar</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: They can dance salsa.</em> <button class="audio-btn" onclick="playAudio('They can dance salsa.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Drive</span> <button class="audio-btn" onclick="playAudio('Drive')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/draɪv/</span>
+                    <span class="pronunciation-text">(DRÁIV)</span>
+                    <span class="translation-text">Dirigir</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: He can't drive yet.</em> <button class="audio-btn" onclick="playAudio('He can\'t drive yet.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Help</span> <button class="audio-btn" onclick="playAudio('Help')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/help/</span>
+                    <span class="pronunciation-text">(RÉLP)</span>
+                    <span class="translation-text">Ajudar</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: Could you help me, please?</em> <button class="audio-btn" onclick="playAudio('Could you help me, please?')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Use</span> <button class="audio-btn" onclick="playAudio('Use')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/juːz/</span>
+                    <span class="pronunciation-text">(IÚUZ)</span>
+                    <span class="translation-text">Usar</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: Can I use your computer?</em> <button class="audio-btn" onclick="playAudio('Can I use your computer?')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Ride a bike</span> <button class="audio-btn" onclick="playAudio('Ride a bike')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/raɪd ə baɪk/</span>
+                    <span class="pronunciation-text">(RÁID ã BÁIK)</span>
+                    <span class="translation-text">Andar de bicicleta</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: I couldn't ride a bike when I was four.</em> <button class="audio-btn" onclick="playAudio('I couldn\'t ride a bike when I was four.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Draw</span> <button class="audio-btn" onclick="playAudio('Draw')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/drɔː/</span>
+                    <span class="pronunciation-text">(DRÓ)</span>
+                    <span class="translation-text">Desenhar</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: He can draw very realistic animals.</em> <button class="audio-btn" onclick="playAudio('He can draw very realistic animals.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Solve</span> <button class="audio-btn" onclick="playAudio('Solve')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/sɑːlv/</span>
+                    <span class="pronunciation-text">(SÓLV)</span>
+                    <span class="translation-text">Resolver</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: Can you solve this math problem?</em> <button class="audio-btn" onclick="playAudio('Can you solve this math problem?')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Fix</span> <button class="audio-btn" onclick="playAudio('Fix')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/fɪks/</span>
+                    <span class="pronunciation-text">(FÊKS)</span>
+                    <span class="translation-text">Consertar</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: My brother can fix cars.</em> <button class="audio-btn" onclick="playAudio('My brother can fix cars.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Borrow</span> <button class="audio-btn" onclick="playAudio('Borrow')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˈbɔːroʊ/</span>
+                    <span class="pronunciation-text">(BÓ-rôu)</span>
+                    <span class="translation-text">Pedir emprestado</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: Could I borrow your book?</em> <button class="audio-btn" onclick="playAudio('Could I borrow your book?')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Pass</span> <button class="audio-btn" onclick="playAudio('Pass')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/pæs/</span>
+                    <span class="pronunciation-text">(PÉS)</span>
+                    <span class="translation-text">Passar (algo a alguém)</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: Could you pass the sugar, please?</em> <button class="audio-btn" onclick="playAudio('Could you pass the sugar, please?')">🔊</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-word">
+                    <span class="example-word">Understand</span> <button class="audio-btn" onclick="playAudio('Understand')">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <span class="ipa-text">/ˌʌndərˈstænd/</span>
+                    <span class="pronunciation-text">(ân-dãr-STÉND)</span>
+                    <span class="translation-text">Entender</span>
+                    <div style="margin-top:8px;">
+                        <em>Ex: I can't understand this text.</em> <button class="audio-btn" onclick="playAudio('I can\'t understand this text.')">🔊</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extra Task -->
+    <div class="tarefa-extra">
+        <h4>Tarefa Extra: Reading and Comprehension 🧠</h4>
+        <h4>Translate the Text</h4>
+        <p>Read the text below about John and his grandfather. Pay attention to how "can", "can't", "could", and "couldn't" are used. Then, try to translate it into Portuguese.</p>
+        <p>
+            John was visiting his grandfather for the weekend. They were looking at old photo albums.
+            "Look at this, John," said his grandfather, pointing to a picture. "When I was your age, I <strong>could</strong> climb that tall tree in our backyard in under a minute. I <strong>could</strong> also swim across the lake without getting tired. I was very active."
+            <br><br>
+            John smiled. "Wow, Grandpa! I <strong>can</strong> climb trees, but I'm not that fast. And I <strong>can</strong> swim, but not across a whole lake! You were really athletic."
+            <br><br>
+            "Yes, I was. But now, I <strong>can't</strong> run like I used to, and I certainly <strong>can't</strong> climb trees anymore," he said with a laugh. "My knees are too old for that. But I <strong>can</strong> tell great stories, can't I?"
+            <br><br>
+            "Yes, you <strong>can</strong>!" John agreed. "Your stories are the best."
+            <br><br>
+            Later, John was trying to assemble a new model airplane, but he was having trouble with a small piece. "Grandpa," he asked, "<strong>Could</strong> you help me with this? I <strong>can't</strong> seem to get this part to fit."
+            <br><br>
+            "Of course," his grandfather replied, putting on his glasses. "Let's see... Ah, I see the problem. I <strong>couldn't</strong> fix my old watch yesterday because the parts were too small, but I think I <strong>can</strong> manage this."
+            <br><br>
+            John watched as his grandfather skillfully fixed the piece. "Thanks, Grandpa! You're the best."
+            <br><br>
+            "Anytime," he said. "Now, <strong>can</strong> I have a cup of tea, please? My throat is a bit dry from all this talking."
+            <br><br>
+            "Sure! I <strong>can</strong> make it for you," John said, heading to the kitchen. He felt happy that while some abilities change over time, the ability to help each other never has to.
+        </p>
+
+        <div style="margin-top: 20px;">
+            <strong>Quiz:</strong> Based on the text, why couldn't the grandfather fix his watch yesterday?
+        </div>
+        <ul class="quiz-options">
+            <li>A) He didn't have his glasses.</li>
+            <li>B) The parts of the watch were too small.</li>
+            <li>C) He didn't know how to fix watches.</li>
+            <li>D) He was too tired.</li>
+            <li>E) John was using his tools.</li>
+        </ul>
+        
+        <details class="gabarito">
+            <summary>Ver Gabarito do Quiz</summary>
+            <p><strong>Resposta Correta:</strong> B</p>
+        </details>
+    </div>
+
+    <!-- Continue Learning -->
+    <section>
+        <h3>Como Continuar Aprendendo? 🚀</h3>
+        <div class="nota-gramatical" style="border-left-color: #27ae60; background-color: #e6f7ef;">
+            <h4 style="color:#27ae60;">Dicas Práticas:</h4>
+            <ul class="exercise-list" style="list-style-type: disc;">
+                <li><strong>Liste Suas Habilidades:</strong> Faça uma lista de coisas que você "can do" e coisas que você "can't do".</li>
+                <li><strong>Peça Permissão:</strong> Em situações do dia a dia, pense em como você pediria permissão usando "Can I...?".</li>
+                <li><strong>Faça Pedidos Educados:</strong> Pratique transformar pedidos diretos em pedidos educados com "Could you...?".</li>
+                <li><strong>Role-play:</strong> Simule conversas onde você pergunta sobre as habilidades de alguém.</li>
+                <li><strong>Ouça Nativos:</strong> Preste atenção em como "can", "can't", "could" e "couldn't" são pronunciados.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Exercises -->
+    <section>
+        <h3>Exercícios Práticos 📝</h3>
+        <div class="secao-exercicios card">
+            <h4>Parte 1: Can, Can't, Could, ou Couldn't?</h4>
+            <p>Complete as frases com a opção correta.</p>
+            <ol class="exercise-list">
+                <li>When I was a baby, I <span class="fill-in-blank">__________</span> walk.</li>
+                <li>My sister is very smart. She <span class="fill-in-blank">__________</span> speak four languages.</li>
+                <li>Excuse me, <span class="fill-in-blank">__________</span> you tell me the time, please?</li>
+                <li>I <span class="fill-in-blank">__________</span> go to the party last night because I was sick.</li>
+                <li>A: <span class="fill-in-blank">__________</span> you swim? B: Yes, I <span class="fill-in-blank">__________</span>.</li>
+                <li>He <span class="fill-in-blank">__________</span> play the piano very well now, but he <span class="fill-in-blank">__________</span> play at all a few years ago.</li>
+                <li><span class="fill-in-blank">__________</span> I borrow your dictionary?</li>
+                <li>They looked everywhere, but they <span class="fill-in-blank">__________</span> find their cat.</li>
+            </ol>
+
+            <h4>Parte 2: Transforme as Frases</h4>
+            <p>Transforme as frases afirmativas em negativas e depois em interrogativas.</p>
+            <ol class="exercise-list">
+                <li>She can cook Italian food.
+                    <br>Negativa: <span class="fill-in-blank">__________</span>.
+                    <br>Interrogativa: <span class="fill-in-blank">__________</span>?
+                </li>
+                <li>He could ride a bike when he was five.
+                    <br>Negativa: <span class="fill-in-blank">__________</span>.
+                    <br>Interrogativa: <span class="fill-in-blank">__________</span>?
+                </li>
+                <li>They can understand this lesson.
+                    <br>Negativa: <span class="fill-in-blank">__________</span>.
+                    <br>Interrogativa: <span class="fill-in-blank">__________</span>?
+                </li>
+            </ol>
+
+            <details class="gabarito">
+                <summary>Ver Respostas dos Exercícios</summary>
+                <p><em>Respostas da Parte 1: 1. couldn't, 2. can, 3. Could, 4. couldn't, 5. Can, can, 6. can, couldn't, 7. Can/Could, 8. couldn't.</em></p>
+                <p><em>Respostas da Parte 2: 1. She can't cook Italian food. / Can she cook Italian food? 2. He couldn't ride a bike when he was five. / Could he ride a bike when he was five? 3. They can't understand this lesson. / Can they understand this lesson?</em></p>
+            </details>
+        </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section>
+        <h3>Conclusão 🥳</h3>
+        <p>Excelente trabalho na Aula 17! Agora você pode usar "can" e "could" para falar sobre habilidades no presente e no passado, pedir permissão e fazer pedidos educados. Essas são ferramentas essenciais para uma comunicação eficaz e cortês.</p>
+        <p>Continue praticando o uso desses verbos modais em diferentes situações.</p>
+        <p>Na Aula 18: "Pedidos Formais e Possibilidades – "May" e "Might"", vamos explorar outros verbos modais para expandir ainda mais sua capacidade de expressar nuances na comunicação. Até lá!</p>
+    </section>
+
+    <a href="#" class="nav-btn">⬅️ Voltar ao Menu</a>
+
+    <footer>
+        <p>Aula 17: Habilidade e Permissão com "Can" e "Could"</p>
+    </footer>
+
+</div>
+
+<script>
+    // Configuração do SpeechSynthesis para Mobile
+    let voices = [];
+    
+    // Função para carregar vozes
+    function loadVoices() { 
+        voices = window.speechSynthesis.getVoices(); 
+    }
+    
+    // Garantir carregamento assíncrono (especialmente para Chrome/Android)
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    
+    // Tentativa inicial de carregamento
+    loadVoices();
+
+    function playAudio(text) {
+        if ('speechSynthesis' in window) {
+            // Cancela áudio anterior para não sobrepor
+            window.speechSynthesis.cancel();
+            
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US'; 
+            utterance.rate = 0.85; // Velocidade um pouco mais lenta para estudo
+
+            // Se vozes ainda não carregaram (edge case), tenta carregar agora
+            if (voices.length === 0) voices = window.speechSynthesis.getVoices();
+            
+            // Lógica de seleção de voz (Prioridade: Google/Premium > Nativa US > Qualquer EN)
+            const targetVoice = voices.find(voice => 
+                (voice.name.includes('Google') || voice.name.includes('Premium') || voice.name.includes('Enhanced')) && voice.lang === 'en-US'
+            ) || voices.find(voice => 
+                voice.lang === 'en-US'
+            ) || voices.find(voice => 
+                voice.lang.startsWith('en')
+            );
+
+            if (targetVoice) {
+                utterance.voice = targetVoice;
+                console.log("Voz selecionada: " + targetVoice.name);
+            }
+
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Desculpe, seu navegador não suporta áudio nativo.");
+        }
+    }
+</script>
+
+</body>
+</html>
