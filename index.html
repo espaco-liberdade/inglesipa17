@@ -4,55 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Aula 17: O Que Você Pode Fazer? – Habilidade e Permissão com "Can" e "Could"</title>
+    
+    <!-- Fontes do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
     <style>
         /* --- RESET E BASE --- */
-        * { box-sizing: border-box; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
             background-color: #f0f2f5;
             color: #333;
             -webkit-font-smoothing: antialiased;
+            padding: 20px 10px;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
             background: #fff;
-            padding: 20px 15px;
-            min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
 
         /* --- TIPOGRAFIA --- */
         h1 {
             color: #2c3e50;
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 25px;
             padding-bottom: 15px;
             border-bottom: 3px solid #3498db;
             line-height: 1.3;
         }
         
-        h2, h3, h4 { color: #2c3e50; margin-top: 25px; }
-        h3 { color: #34495e; font-size: 1.25rem; border-left: 4px solid #3498db; padding-left: 10px; }
-        h4 { color: #c0392b; font-size: 1.1rem; margin-bottom: 10px; }
+        h2 { color: #2c3e50; margin-top: 30px; margin-bottom: 15px; font-size: 1.5rem; }
+        h3 { color: #34495e; font-size: 1.25rem; border-left: 4px solid #3498db; padding-left: 10px; margin-top: 25px; margin-bottom: 15px; }
+        h4 { color: #c0392b; font-size: 1.1rem; margin-top: 20px; margin-bottom: 10px; }
         
-        p, li { font-size: 1rem; margin-bottom: 10px; }
+        p, li { font-size: 1rem; margin-bottom: 12px; color: #444; }
+        ul, ol { padding-left: 20px; margin-bottom: 15px; }
         
         .emoji-large { font-size: 1.5rem; }
         .emoji-small { font-size: 1.2rem; }
 
         /* --- DESTAQUES E CAIXAS --- */
         .theme-intro, .nota-gramatical, .nota-dica, .secao-exercicios, .extra-task {
-            padding: 15px;
-            margin: 15px 0;
+            padding: 20px;
+            margin: 20px 0;
             border-radius: 8px;
             border-left: 5px solid transparent;
         }
@@ -69,7 +77,7 @@
         code, .ipa-symbol {
             font-family: 'Roboto Mono', monospace;
             background-color: #f1f1f1;
-            padding: 2px 4px;
+            padding: 3px 6px;
             border-radius: 4px;
             color: #e74c3c;
             font-size: 0.9em;
@@ -80,7 +88,7 @@
             color: #27ae60;
             font-style: italic;
             font-size: 0.85em;
-            margin-top: 2px;
+            margin-top: 4px;
         }
 
         /* --- BOTÃO DE NAVEGAÇÃO --- */
@@ -90,13 +98,15 @@
             background-color: #34495e;
             color: white;
             text-align: center;
-            padding: 12px;
-            margin: 10px 0;
+            padding: 14px;
+            margin: 15px 0 25px 0;
             text-decoration: none;
             border-radius: 8px;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 1rem;
             border: none;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
         .nav-btn:hover { background-color: #2c3e50; }
 
@@ -104,44 +114,50 @@
         .table-responsive-wrapper {
             width: 100%;
             overflow-x: auto;
-            margin-bottom: 20px;
+            -webkit-overflow-scrolling: touch;
+            margin-bottom: 25px;
             border-radius: 8px;
-            border: 1px solid #eee;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 100%; 
+            min-width: 500px; /* Garante que a tabela não esmague os dados no celular */
         }
 
         th {
             background-color: #34495e;
             color: white;
-            padding: 10px;
-            font-size: 0.9rem;
+            padding: 12px 15px;
+            font-size: 0.95rem;
             text-align: left;
+            font-weight: 600;
         }
 
         td {
-            padding: 12px 10px;
+            padding: 15px;
             border-bottom: 1px solid #eee;
-            vertical-align: top;
+            vertical-align: middle;
         }
 
-        tr:nth-child(even) { background-color: #f9f9f9; }
+        tr:nth-child(even) { background-color: #fafafa; }
+        tr:hover { background-color: #f1f5f9; }
 
         .details-cell {
             font-size: 0.9rem;
             color: #555;
+            line-height: 1.4;
         }
+        
         .details-translation {
             display: block;
-            margin-top: 6px;
-            padding-top: 6px;
+            margin-top: 8px;
+            padding-top: 8px;
             border-top: 1px dashed #ddd;
             color: #444;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         /* --- BOTÃO DE ÁUDIO GERAL --- */
@@ -149,24 +165,25 @@
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             vertical-align: middle;
-            margin-left: 5px;
-            padding: 0 5px;
+            margin-left: 8px;
+            padding: 5px;
+            border-radius: 50%;
+            transition: transform 0.1s;
         }
-        
+        .audio-btn-inline:active { transform: scale(0.9); }
+
         /* --- VOCABULÁRIO: GRID DE CARDS (Mobile First) --- */
         .vocab-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 15px;
-            margin: 20px 0;
+            margin: 25px 0;
         }
 
         @media (min-width: 600px) {
-            .vocab-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+            .vocab-grid { grid-template-columns: 1fr 1fr; }
         }
 
         .vocab-item {
@@ -177,10 +194,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            transition: transform 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
         
+        .vocab-item:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.08); }
         .vocab-item:active { transform: scale(0.98); background-color: #fdfdfd; }
 
         .vocab-text {
@@ -205,14 +223,14 @@
             font-size: 0.8rem;
             color: #7f8c8d;
             text-transform: uppercase;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 0.5px;
             margin-top: 2px;
         }
 
         .audio-btn-round {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             background-color: #3498db;
             color: white;
@@ -224,10 +242,12 @@
             cursor: pointer;
             flex-shrink: 0;
             margin-left: 10px;
-            box-shadow: 0 2px 5px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 3px 6px rgba(52, 152, 219, 0.3);
+            transition: background-color 0.2s;
         }
         
-        .audio-btn-round:active { background-color: #2980b9; }
+        .audio-btn-round:hover { background-color: #2980b9; }
+        .audio-btn-round:active { transform: scale(0.95); }
 
         /* --- GABARITO E EXERCÍCIOS --- */
         .fill-in-blank {
@@ -245,47 +265,68 @@
             background: #f8f9fa;
             border: 1px solid #ddd;
             border-radius: 8px;
-            padding: 10px;
+            overflow: hidden;
         }
         
         details.gabarito summary {
             font-weight: bold;
             cursor: pointer;
             color: #2c3e50;
-            padding: 10px;
+            padding: 15px;
             list-style: none;
+            background-color: #f1f5f9;
+            transition: background-color 0.2s;
         }
         
-        details.gabarito summary::after { content: " 👇"; }
+        details.gabarito summary:hover { background-color: #e2e8f0; }
+        details.gabarito summary::after { content: " 👇"; float: right; }
         details.gabarito[open] summary::after { content: " 👆"; }
 
         .gabarito-content {
             padding: 15px;
             border-top: 1px solid #ddd;
             color: #555;
+            background-color: #fff;
         }
 
         .quiz-options {
             list-style-type: lower-alpha;
             padding-left: 20px;
         }
+        
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 25px 0;
+        }
+
+        /* --- MEDIA QUERIES PARA CELULARES PEQUENOS --- */
+        @media (max-width: 480px) {
+            .container { padding: 15px; border-radius: 8px; }
+            h1 { font-size: 1.4rem; }
+            h2 { font-size: 1.3rem; }
+            td { padding: 10px; }
+        }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <!-- Botão Navegação Topo -->
-        <button class="nav-btn" onclick="window.location.href='https://espaco-liberdade.github.io/inglesipa/'>⬅ Voltar ao Menu</button>
-
-        <h1>Aula 17: O Que Você Pode Fazer? – Habilidade e Permissão com "Can" e "Could" <span class="emoji-large">💪🗣️</span><br><span style="font-size: 0.8em; font-weight: normal;">(What Can You Do? – Ability and Permission with "Can" and "Could")</span></h1>
-
+        
+        <!-- Botão Navegação Topo (ERRO CORRIGIDO AQUI) -->
+        <button class="nav-btn" onclick="window.location.href='https://espaco-liberdade.github.io/inglesipa/'">⬅ Voltar ao Menu</button>
+        
+        <h1>Aula 17: O Que Você Pode Fazer? – Habilidade e Permissão com "Can" e "Could" <span class="emoji-large">💪🗣️</span><br>
+            <span style="font-size: 0.7em; font-weight: normal; color: #555;">(What Can You Do? – Ability and Permission with "Can" and "Could")</span>
+        </h1>
+        
         <div class="theme-intro">
             <p>Olá! Chegamos à Aula 17! <span class="emoji-small">🎉</span></p>
             <p>Nesta aula, vamos explorar dois verbos modais muito importantes: <strong>"can"</strong> e <strong>"could"</strong>. Com eles, aprenderemos a falar sobre <strong>habilidades (tocar um instrumento, falar um idioma, cozinhar)</strong> e a fazer <strong>pedidos educados em situações cotidianas</strong>. Prepare-se para expressar suas capacidades e interagir com mais polidez! <span class="emoji-small">🎹🗣️🍳🤝</span></p>
         </div>
-
+        
         <h2>17. Expressando Habilidades e Pedindo Permissão</h2>
-
+        
         <section id="modal-verbs-intro">
             <h3>17.1 Verbos Modais: Uma Introdução <span class="emoji-small">🧩</span></h3>
             <p><strong>Verbos Modais (Modal Verbs)</strong> são verbos auxiliares especiais em inglês. Eles nos ajudam a expressar ideias como habilidade, possibilidade, permissão, obrigação, etc.</p>
@@ -300,7 +341,7 @@
         <section id="can-present-ability">
             <h3>17.2 Habilidade no Presente: "Can" (Eu consigo, eu posso) <span class="emoji-small">👍</span></h3>
             <p>Usamos <strong>"can"</strong> para falar sobre habilidades ou capacidades no presente.</p>
-
+            
             <h4>Afirmativas com "Can"</h4>
             <div class="table-responsive-wrapper">
                 <table>
@@ -374,7 +415,7 @@
                     </tbody>
                 </table>
             </div>
-
+            
             <h4>Negativas com "Can"</h4>
             <div class="table-responsive-wrapper">
                 <table>
@@ -494,7 +535,7 @@
         <section id="could-past-ability">
             <h3>17.4 Habilidade no Passado: "Could" (Eu conseguia, eu podia) <span class="emoji-small">🕰️👍</span></h3>
             <p><strong>"Could"</strong> é o passado de "can" para falar sobre habilidades gerais no passado.</p>
-
+            
             <h4>Afirmativas com "Could"</h4>
             <div class="table-responsive-wrapper">
                 <table>
@@ -619,22 +660,18 @@
             <h3>Tarefa Extra ✍️</h3>
             <h4>Translate the Text</h4>
             <p>Read the text about John and his grandfather. Then, try to translate it into Portuguese.</p>
-            <p style="background: white; padding: 15px; border-radius: 8px;">
-                John was visiting his grandfather. "Look at this, John," said his grandfather. "When I was your age, I <strong>could</strong> climb that tall tree in under a minute. I <strong>could</strong> also swim across the lake. I was very active."
-                <br><br>
-                John smiled. "Wow, Grandpa! I <strong>can</strong> climb trees, but I'm not that fast. And I <strong>can</strong> swim, but not across a whole lake!"
-                <br><br>
-                "Yes, I was. But now, I <strong>can't</strong> run like I used to, and I certainly <strong>can't</strong> climb trees anymore. My knees are too old. But I <strong>can</strong> tell great stories, can't I?"
-                <br><br>
-                "Yes, you <strong>can</strong>!" John agreed. Later, John was having trouble with a piece of a model airplane. "Grandpa, <strong>could</strong> you help me with this? I <strong>can't</strong> seem to get this part to fit."
-                <br><br>
-                "Of course," his grandfather replied. "I <strong>couldn't</strong> fix my old watch yesterday because the parts were too small, but I think I <strong>can</strong> manage this."
-                <br><br>
-                John watched as he fixed the piece. "Thanks, Grandpa! Now, <strong>can</strong> I have a cup of tea, please?"
-                <br><br>
-                "Sure! I <strong>can</strong> make it for you," John said.
-            </p>
+            <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #eee;">
+                <p>John was visiting his grandfather. "Look at this, John," said his grandfather. "When I was your age, I <strong>could</strong> climb that tall tree in under a minute. I <strong>could</strong> also swim across the lake. I was very active."</p>
+                <p>John smiled. "Wow, Grandpa! I <strong>can</strong> climb trees, but I'm not that fast. And I <strong>can</strong> swim, but not across a whole lake!"</p>
+                <p>"Yes, I was. But now, I <strong>can't</strong> run like I used to, and I certainly <strong>can't</strong> climb trees anymore. My knees are too old. But I <strong>can</strong> tell great stories, can't I?"</p>
+                <p>"Yes, you <strong>can</strong>!" John agreed. Later, John was having trouble with a piece of a model airplane. "Grandpa, <strong>could</strong> you help me with this? I <strong>can't</strong> seem to get this part to fit."</p>
+                <p>"Of course," his grandfather replied. "I <strong>couldn't</strong> fix my old watch yesterday because the parts were too small, but I think I <strong>can</strong> manage this."</p>
+                <p>John watched as he fixed the piece. "Thanks, Grandpa! Now, <strong>can</strong> I have a cup of tea, please?"</p>
+                <p>"Sure! I <strong>can</strong> make it for you," John said.</p>
+            </div>
+            
             <hr>
+            
             <h4>Quiz</h4>
             <p>Based on the text, why couldn't the grandfather fix his watch yesterday?</p>
             <ol class="quiz-options">
@@ -644,6 +681,7 @@
                 <li>He was too tired.</li>
                 <li>John was using his tools.</li>
             </ol>
+            
             <details class="gabarito">
                 <summary>Ver Resposta do Quiz</summary>
                 <div class="gabarito-content">Resposta Correta: <strong>b) The parts of the watch were too small.</strong></div>
@@ -661,6 +699,7 @@
                     <li>I <span class="fill-in-blank"></span> go to the party last night.</li>
                 </ol>
             </div>
+            
             <details class="gabarito">
                 <summary>Ver Gabarito dos Exercícios</summary>
                 <div class="gabarito-content">
@@ -673,9 +712,9 @@
             <h3>Conclusão 🥳</h3>
             <p>Excelente trabalho na Aula 17! Agora você pode usar "can" e "could" para falar sobre habilidades e pedidos. Na Aula 18: "Pedidos Formais e Possibilidades – 'May' e 'Might'", vamos expandir ainda mais!</p>
         </section>
-
-        <!-- Botão Navegação Rodapé -->
-        <button class="nav-btn" onclick="window.location.href='https://espaco-liberdade.github.io/inglesipa/'>⬅ Voltar ao Menu</button>
+        
+        <!-- Botão Navegação Rodapé (ERRO CORRIGIDO AQUI TAMBÉM) -->
+        <button class="nav-btn" onclick="window.location.href='https://espaco-liberdade.github.io/inglesipa/'">⬅ Voltar ao Menu</button>
     </div>
 
     <!-- SCRIPT DE ÁUDIO OTIMIZADO -->
@@ -694,7 +733,7 @@
 
         function playAudio(text) {
             if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
+                window.speechSynthesis.cancel(); // Para áudios anteriores
 
                 const utterance = new SpeechSynthesisUtterance(text);
                 utterance.rate = 0.85; 
@@ -702,15 +741,18 @@
 
                 if (voices.length === 0) loadVoices();
 
+                // Tenta achar uma voz americana de alta qualidade
                 let targetVoice = voices.find(voice => 
                     (voice.name.includes('Google') || voice.name.includes('Premium') || voice.name.includes('Samantha')) 
                     && voice.lang.includes('en-US')
                 );
 
+                // Fallback para qualquer voz americana
                 if (!targetVoice) {
                     targetVoice = voices.find(voice => voice.lang === 'en-US');
                 }
 
+                // Fallback para qualquer voz em inglês
                 if (!targetVoice) {
                     targetVoice = voices.find(voice => voice.lang.startsWith('en'));
                 }
